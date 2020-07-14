@@ -14,9 +14,11 @@ Create an account [https://www.last.fm/api/]
 add .env in the directory
 add your api key in .env
 
+example .env
+
 ```
-REACT_APP_CLIENT_KEY='your api key'
-REACT_APP_CLIENT_SECRET='your api secret'
+REACT_APP_CLIENT_KEY='y6a3f094bc92b9db6b9604d2b7ec8a7f9'
+REACT_APP_CLIENT_SECRET='3494934f062101866e59cbe8ca2e36a7'
 ```
 
 ## Available Scripts
