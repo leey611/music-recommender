@@ -2,11 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Search Similar Artists
 
-(https://github.com/leey611/music-recommender/blob/master/images/similar_artists.png)
+![Similar Artists](https://github.com/leey611/music-recommender/blob/master/images/similar_artists.png)
 
 ## See the similar artist's albums
 
-(https://github.com/leey611/music-recommender/blob/master/images/artist_albums.png)
+![Albums](https://github.com/leey611/music-recommender/blob/master/images/artist_albums.png)
 
 ## Get API key at Last Fm first
 
