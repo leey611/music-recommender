@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Search Similar Artists
+
+(https://github.com/leey611/music-recommender/blob/master/images/similar_artists.png)
+
+## See the similar artist's albums
+
+(https://github.com/leey611/music-recommender/blob/master/images/artist_albums.png)
+
 ## Get API key at Last Fm first
 
 Create an account [https://www.last.fm/api/]
