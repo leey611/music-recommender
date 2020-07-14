@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Get API key at Last Fm first
+
+Create an account [https://www.last.fm/api/]
+add .env in the directory
+add your api key in .env
+
+```
+REACT_APP_CLIENT_KEY='your api key'
+REACT_APP_CLIENT_SECRET='your api secret'
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
