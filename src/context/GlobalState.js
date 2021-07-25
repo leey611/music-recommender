@@ -41,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
       // const resJson = await res.json();
       // const data = await resJson.similarartists.artist;
  
-      const res = await fetch('/artists', {
+      const res = await fetch('https://intense-waters-50948.herokuapp.com/artists', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ export const GlobalProvider = ({ children }) => {
     try {
       setLoading(true);
       const res = await fetch(
-        '/albums', {
+        'https://intense-waters-50948.herokuapp.com/albums', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

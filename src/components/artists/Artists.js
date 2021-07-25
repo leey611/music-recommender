@@ -11,7 +11,7 @@ const Artists = () => {
       {!loading && noFound === false && !artists.length && (
         <p>Oops! No results found:(</p>
       )}
-      {!loading && noFound && noFound != 'noinput' && (
+      {!loading && noFound && noFound !== 'noinput' && (
         <p>Oops! Can't find this artist:(</p>
       )}
       {loading ? (

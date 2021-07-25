@@ -1,6 +1,7 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import spinner from '../layout/spinner.gif';
+import { GlobalContext } from '../../context/GlobalState'
 
 let lastFmClientKey;
 let lastFmClientSecret;
@@ -18,18 +19,27 @@ const ArtistItem = ({ artist }) => {
 
   useEffect(() => {
     fetch(
-      `${lastFmBaseUrl}?method=artist.gettopalbums&artist=${artist.name}&api_key=${lastFmClientKey}&format=json`
+      'https://intense-waters-50948.herokuapp.com/albums', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: artist.name
+      })
+    }
+      // `${lastFmBaseUrl}?method=artist.gettopalbums&artist=${artist.name}&api_key=${lastFmClientKey}&format=json`
     )
       .then((res) => res.json())
       .then((jsonRes) => {
         if (document.getElementById(artist.name)) {
           if (
-            jsonRes.topalbums &&
-            jsonRes.topalbums.album[0].image &&
-            jsonRes.topalbums.album[0].image[2]['#text'] != ''
+            jsonRes &&
+            jsonRes.album[0].image &&
+            jsonRes.album[0].image[2]['#text'] !== ''
           ) {
             document.getElementById(artist.name).src =
-              jsonRes.topalbums.album[0].image[2]['#text'];
+              jsonRes.album[0].image[2]['#text'];
           } else {
             document.getElementById(artist.name).src = artist.image[2]['#text'];
           }
