@@ -35,13 +35,32 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       setLoading(true);
-      const res = await fetch(
-        `${lastFmBaseUrl}?method=artist.getsimilar&artist=${text}&api_key=${lastFmClientKey}&format=json`
-      );
-      const resJson = await res.json();
-      const data = await resJson.similarartists.artist;
-
-      dispatch({ type: 'SEARCH_ARTISTS', payload: data });
+      // const res = await fetch(
+      //   `${lastFmBaseUrl}?method=artist.getsimilar&artist=${text}&api_key=${lastFmClientKey}&format=json`
+      // );
+      // const resJson = await res.json();
+      // const data = await resJson.similarartists.artist;
+ 
+      const res = await fetch('/artists', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text
+        })
+      })
+      
+      // const res = await fetch('http://localhost:5000/search', {
+      //   method: 'POST',
+      //   mode: 'cors',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(text)
+      // })
+      const data = await res.json()
+      dispatch({ type: 'SEARCH_ARTISTS', payload: data.artist });
 
       //setArtists(data);
       setNoFound(false);
@@ -56,21 +75,28 @@ export const GlobalProvider = ({ children }) => {
   };
 
   //get albums
-  const getAlbums = async (artistname) => {
-    const lastFmBaseUrl = 'https://ws.audioscrobbler.com/2.0/';
+  const getAlbums = async (text) => {
+    //const lastFmBaseUrl = 'https://ws.audioscrobbler.com/2.0/';
     try {
       setLoading(true);
       const res = await fetch(
-        `${lastFmBaseUrl}?method=artist.gettopalbums&artist=${artistname}&api_key=${lastFmClientKey}&format=json`
+        '/albums', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text
+          })
+        }
+        // `${lastFmBaseUrl}?method=artist.gettopalbums&artist=${artistname}&api_key=${lastFmClientKey}&format=json`
       );
       const resJson = await res.json();
-
-      const data = await resJson.topalbums.album;
+      const data = await resJson.album;
 
       dispatch({ type: 'GET_ALBUMS', payload: data });
       //setAlbums(data);
       setLoading(false);
-      console.log('set', data);
     } catch (err) {
       console.log(err);
       setLoading(false);
